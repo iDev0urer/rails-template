@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+
+development:
+  <<: *default
+  database: budgit_development
+
+test:
+  <<: *default
+  database: budgit_test
+
+production:
+  <<: *default
+  database: <%= ENV['DB_NAME'] %>
